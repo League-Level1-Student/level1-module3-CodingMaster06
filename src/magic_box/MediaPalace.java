@@ -59,7 +59,7 @@ public class MediaPalace {
 	// try {
 	// playMp3.play();
 	// } catch (JavaLayerException e) {
-	// // TODO Auto-generated catch block
+	// // // // // // // // // // // // // // // // // // // // // 
 	// e.printStackTrace();
 	// }
 	// }
