@@ -5,6 +5,8 @@ package jukebox;
  */
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -12,7 +14,10 @@ import java.net.URL;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import javazoom.jl.player.advanced.AdvancedPlayer;
@@ -20,13 +25,17 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 /*   If you don't have javazoom.jar in your project, you can download it from here: http://bit.ly/javazoom
  *   Right click your project and add it as a JAR (Under Java Build Path > Libraries).*/
 
-public class Jukebox implements Runnable {
-
+public class Jukebox implements Runnable, ActionListener {
+	JButton b = new JButton(); 
+	JButton b1 = new JButton(); 
+	Song s2 = new Song("Song2.mp3");
+	Song s = new Song("Song.mp3");
     public void run() {
 
 		// 1. Find an mp3 on your computer or on the Internet.
 		// 2. Create a Song object for that mp3
-
+    	
+    		
 		// 3. Play the Song
 
 		/*
@@ -36,9 +45,20 @@ public class Jukebox implements Runnable {
 		 * cover is clicked, stop the currently playing song, and play the one
 		 * that was selected.
 		 */
+    	JFrame f = new JFrame(); 
+    	f.setVisible(true);
+    	JPanel p = new JPanel(); 
+    	f.add(p);
+    	
+    	p.add(b1);
+    	p.add(b);
+    	b.addActionListener(this);
+    	b1.addActionListener(this);
+    	
+    	
     }
     
-    
+   
 	/* Use this method to add album covers to your Panel. */
 	private JLabel loadImage(String fileName) {
 		URL imageURL = getClass().getResource(fileName);
@@ -46,6 +66,23 @@ public class Jukebox implements Runnable {
 		return new JLabel(icon);
 	}
 
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if (b == e.getSource()) {
+		
+    	s2.stop();
+		s.play();
+    	
+		} else if (b1 == e.getSource())	 {
+			s.stop();
+			s2.play();
+		}
+    	
+		
+	}
+	
 }
 
 class Song {
