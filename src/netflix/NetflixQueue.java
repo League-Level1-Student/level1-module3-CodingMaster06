@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class NetflixQueue {
-	
+	Movie BirdBox = new Movie("Bird Box", 5);
+	Movie EndGame = new Movie("End Game", 5);
+	Movie HarryPotter7 = new Movie("Harry Potter and the Deathly Hallows", 10000000);
 	ArrayList<Movie> movies = new ArrayList<Movie>();
 	
 	public Movie getBestMovie(){
@@ -39,5 +41,10 @@ public class NetflixQueue {
 			System.out.println(movie);
 		}
 	}
-
+	public void giveBestMovie() {
+		System.out.println("The best movie is " + HarryPotter7 + "!");
+	}
+	public void give2ndBestMovie() {
+		System.out.println("The 2nd best movies are " + EndGame + " and "+ BirdBox +"!");
+	}
 }
